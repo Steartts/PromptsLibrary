@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biblioteca de Prompts | Ste Artts</title>
+  <meta name="description" content="Biblioteca de prompts da Ste Artts para criação de artes, produtos, Shopee, Instagram, aquarela, cartão-postal e mockups." />
+  <style>
+    :root{
+      --bg: #F7F1E8;
+      --paper: #FFFDFC;
+      --brown: #5A3F32;
+      --brown-2: #7A5A49;
+      --peach: #EBC6AE;
+      --peach-soft: #F3DED0;
+      --sand: #E8DDCF;
+      --text: #2E2926;
+      --muted: #786E67;
+      --line: #E5D7C8;
+      --shadow: 0 14px 35px rgba(76, 52, 40, .09);
+      --radius: 20px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Gadugi, "Segoe UI", Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(235,198,174,.28), transparent 30%),
+        linear-gradient(180deg, #fbf7f1 0%, var(--bg) 100%);
+      min-height:100vh;
+    }
+
+    a{color:inherit;text-decoration:none}
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      backdrop-filter: blur(14px);
+      background:rgba(247,241,232,.92);
+      border-bottom:1px solid rgba(122,90,73,.12);
+    }
+
+    .topbar-inner{
+      max-width:1200px;
+      margin:0 auto;
+      padding:14px 20px 12px;
+    }
+
+    .brand-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:12px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .mark{
+      width:42px;height:42px;
+      border-radius:14px;
+      background:linear-gradient(145deg,var(--brown),var(--brown-2));
+      color:#fff;
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      letter-spacing:.06em;
+      box-shadow:0 7px 20px rgba(90,63,50,.18);
+    }
+
+    .brand h1{
+      margin:0;
+      font-size:1.02rem;
+      color:var(--brown);
+      line-height:1.15;
+    }
+
+    .brand small{
+      color:var(--muted);
+      display:block;
+      margin-top:3px;
+      font-size:.78rem;
+    }
+
+    .search-wrap{
+      width:min(420px, 100%);
+      position:relative;
+    }
+
+    .search{
+      width:100%;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.9);
+      color:var(--text);
+      padding:11px 15px 11px 39px;
+      border-radius:999px;
+      outline:none;
+      font-family:inherit;
+      transition:.2s ease;
+    }
+
+    .search:focus{
+      border-color:var(--peach);
+      box-shadow:0 0 0 4px rgba(235,198,174,.18);
+    }
+
+    .search-icon{
+      position:absolute;
+      left:14px; top:50%;
+      transform:translateY(-50%);
+      color:var(--brown-2);
+      font-size:.95rem;
+      pointer-events:none;
+    }
+
+    .menu{
+      display:flex;
+      gap:8px;
+      overflow-x:auto;
+      padding-bottom:2px;
+      scrollbar-width:thin;
+    }
+
+    .menu a{
+      flex:0 0 auto;
+      padding:9px 13px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,253,252,.88);
+      color:var(--brown);
+      font-size:.84rem;
+      font-weight:600;
+      transition:.2s ease;
+    }
+
+    .menu a:hover,.menu a.active{
+      background:var(--brown);
+      color:white;
+      border-color:var(--brown);
+      transform:translateY(-1px);
+    }
+
+    .hero{
+      max-width:1200px;
+      margin:0 auto;
+      padding:64px 20px 28px;
+      display:grid;
+      grid-template-columns:1.25fr .75fr;
+      gap:24px;
+      align-items:stretch;
+    }
+
+    .hero-card,.side-card{
+      border:1px solid rgba(122,90,73,.12);
+      background:rgba(255,253,252,.78);
+      box-shadow:var(--shadow);
+      border-radius:28px;
+    }
+
+    .hero-card{
+      padding:38px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-card:after{
+      content:"";
+      position:absolute;
+      width:190px;height:190px;
+      border-radius:50%;
+      right:-60px;bottom:-70px;
+      background:rgba(235,198,174,.35);
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 11px;
+      border-radius:999px;
+      background:var(--peach-soft);
+      color:var(--brown);
+      font-size:.78rem;
+      font-weight:700;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+
+    .hero h2{
+      margin:18px 0 12px;
+      color:var(--brown);
+      font-size:clamp(2rem, 5vw, 4.2rem);
+      line-height:.98;
+      letter-spacing:-.035em;
+      max-width:850px;
+    }
+
+    .hero p{
+      margin:0;
+      max-width:750px;
+      color:var(--muted);
+      font-size:1.03rem;
+      line-height:1.7;
+    }
+
+    .side-card{
+      padding:26px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:18px;
+      background:linear-gradient(160deg, rgba(235,198,174,.72), rgba(255,253,252,.92));
+    }
+
+    .side-card h3{
+      margin:0 0 8px;
+      color:var(--brown);
+      font-size:1.05rem;
+    }
+
+    .side-card p{
+      margin:0;
+      color:#5c5049;
+      line-height:1.55;
+      font-size:.92rem;
+    }
+
+    .quick-list{
+      display:grid;
+      gap:9px;
+    }
+
+    .quick-list span{
+      display:flex;
+      align-items:center;
+      gap:9px;
+      padding:9px 11px;
+      background:rgba(255,255,255,.58);
+      border:1px solid rgba(122,90,73,.1);
+      border-radius:13px;
+      font-size:.86rem;
+      color:var(--brown);
+    }
+
+    main{
+      max-width:1200px;
+      margin:0 auto;
+      padding:10px 20px 90px;
+    }
+
+    .section{
+      scroll-margin-top:132px;
+      margin-top:36px;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:16px;
+    }
+
+    .section-title{
+      margin:0;
+      color:var(--brown);
+      font-size:1.45rem;
+    }
+
+    .section-sub{
+      margin:5px 0 0;
+      color:var(--muted);
+      font-size:.92rem;
+      line-height:1.5;
+    }
+
+    .badge{
+      padding:7px 10px;
+      background:var(--sand);
+      color:var(--brown-2);
+      border-radius:999px;
+      font-size:.72rem;
+      font-weight:700;
+      white-space:nowrap;
+    }
+
+    .prompt-card{
+      background:rgba(255,253,252,.94);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:0 8px 24px rgba(90,63,50,.055);
+      overflow:hidden;
+      margin-bottom:16px;
+      transition:.2s ease;
+    }
+
+    .prompt-card:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 30px rgba(90,63,50,.09);
+    }
+
+    .card-head{
+      padding:18px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(90deg, rgba(243,222,208,.5), rgba(255,253,252,.4));
+    }
+
+    .card-head h3{
+      margin:0;
+      color:var(--brown);
+      font-size:1.02rem;
+    }
+
+    .card-head p{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:.78rem;
+    }
+
+    .copy-btn{
+      border:0;
+      cursor:pointer;
+      border-radius:12px;
+      padding:10px 13px;
+      background:var(--brown);
+      color:#fff;
+      font-family:inherit;
+      font-weight:700;
+      font-size:.78rem;
+      transition:.2s ease;
+      white-space:nowrap;
+    }
+
+    .copy-btn:hover{background:#463126}
+    .copy-btn.copied{background:#6c7651}
+
+    pre{
+      margin:0;
+      padding:20px;
+      white-space:pre-wrap;
+      word-break:break-word;
+      overflow-wrap:anywhere;
+      font-family:Gadugi, "Segoe UI", Arial, sans-serif;
+      font-size:.91rem;
+      line-height:1.72;
+      color:#3c3430;
+      background:transparent;
+    }
+
+    .tip{
+      margin:14px 20px 20px;
+      padding:13px 15px;
+      border-radius:14px;
+      border:1px dashed #d6b8a4;
+      background:#fff8f3;
+      color:#6d594f;
+      font-size:.84rem;
+      line-height:1.55;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+
+    .empty{
+      display:none;
+      text-align:center;
+      padding:44px 20px;
+      color:var(--muted);
+    }
+
+    footer{
+      border-top:1px solid rgba(122,90,73,.12);
+      padding:24px 20px 34px;
+      color:var(--muted);
+      text-align:center;
+      font-size:.82rem;
+    }
+
+    .back-top{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      width:44px;height:44px;
+      border-radius:50%;
+      border:1px solid var(--line);
+      background:var(--paper);
+      box-shadow:var(--shadow);
+      display:grid;
+      place-items:center;
+      color:var(--brown);
+      font-weight:700;
+      opacity:0;
+      pointer-events:none;
+      transition:.2s ease;
+      z-index:999;
+    }
+
+    .back-top.show{
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    @media (max-width: 860px){
+      .brand-row{align-items:stretch;flex-direction:column}
+      .search-wrap{width:100%}
+      .hero{grid-template-columns:1fr;padding-top:34px}
+      .hero-card{padding:28px}
+      .grid-2{grid-template-columns:1fr}
+      .section{scroll-margin-top:175px}
+    }
+
+    @media (max-width: 560px){
+      .hero h2{font-size:2.25rem}
+      .hero-card{padding:24px}
+      .side-card{padding:22px}
+      .card-head{align-items:flex-start;flex-direction:column}
+      .copy-btn{width:100%}
+      pre{padding:18px;font-size:.87rem}
+    }
+
+    @media print{
+      .topbar,.back-top,.copy-btn,.search-wrap{display:none!important}
+      body{background:white}
+      .hero{padding-top:20px}
+      .prompt-card,.hero-card,.side-card{box-shadow:none}
+    }
+  </style>
+</head>
+<body>
+
+<header class="topbar" id="topo">
+  <div class="topbar-inner">
+    <div class="brand-row">
+      <div class="brand">
+        <div class="mark">SA</div>
+        <div>
+          <h1>Ste Artts · Biblioteca de Prompts</h1>
+          <small>Consulta rápida para criação visual</small>
+        </div>
+      </div>
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input id="search" class="search" type="search" placeholder="Buscar: aquarela, Shopee, botton, Instagram..." />
+      </div>
+    </div>
+
+    <nav class="menu" aria-label="Menu de prompts">
+      <a href="#base">Prompt Base</a>
+      <a href="#shopee">Shopee</a>
+      <a href="#aquarela">Aquarela</a>
+      <a href="#instagram">Instagram</a>
+      <a href="#postal">Cartão-postal</a>
+      <a href="#mockup">Mockup</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#refinamento">Refinamento</a>
+      <a href="#restricoes">Restrições</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-card">
+    <span class="eyebrow">Padrão visual Ste Artts</span>
+    <h2>Prompts que parecem direção de arte, não “prompt de IA”.</h2>
+    <p>
+      Use os modelos abaixo como ponto de partida. Troque somente produto, tema, cores,
+      elementos obrigatórios, formato e restrições específicas. A identidade da marca permanece consistente.
+    </p>
+  </div>
+
+  <aside class="side-card">
+    <div>
+      <h3>Princípios do nosso padrão</h3>
+      <p>Menos elementos, mais intenção. Visual humano, elegante, artesanal e coerente com o produto.</p>
+    </div>
+    <div class="quick-list">
+      <span>✓ Poucos elementos e bastante respiro</span>
+      <span>✓ Textura e imperfeições naturais</span>
+      <span>✓ Fidelidade ao produto e mascotes</span>
+      <span>✓ Nada de brilho, excesso ou “cara de IA”</span>
+    </div>
+  </aside>
+</section>
+
+<main id="library">
+
+  <section class="section searchable" id="base" data-keywords="base universal prompt mae estrutura briefing ste artts">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">Prompt Base Universal</h2>
+        <p class="section-sub">O esqueleto para praticamente qualquer arte da Ste Artts.</p>
+      </div>
+      <span class="badge">Comece aqui</span>
+    </div>
+
+    <article class="prompt-card">
+      <div class="card-head">
+        <div>
+          <h3>Prompt-mãe da Ste Artts</h3>
+          <p>Substitua somente os campos entre colchetes.</p>
+        </div>
+        <button class="copy-btn" data-copy="p-base">Copiar prompt</button>
+      </div>
+      <pre id="p-base">Crie uma arte para [tipo de produto/uso].
+
+Objetivo: [ex: divulgação, Shopee, botton, marcador de página, cartão postal, story, capa de produto].
+
+Tema principal: [descreva o tema].
+
+Estilo visual: [ex: aquarela artesanal, fotografia realista de produto, editorial minimalista, ilustração delicada].
+
+Composição: [ex: simples, equilibrada, elegante, com bastante espaço livre, foco no elemento principal].
+
+Elementos obrigatórios: [liste os elementos que precisam aparecer].
+
+Elementos secundários: [liste elementos opcionais e discretos].
+
+Paleta de cores: [liste 3 a 5 cores principais].
+
+Acabamento: [ex: textura de papel, pinceladas visíveis, aparência natural, luz suave, visual artesanal, aspecto realista].
+
+Texto na arte: [colocar / não colocar. Se colocar, escreva exatamente o texto].
+
+Formato/proporção: [ex: 1:1, 9:16, 5,5x18 cm, 16:9].
+
+Evitar: aparência típica de IA, excesso de elementos, brilho exagerado, composição poluída, fundo muito artificial, objetos flutuando, simetria excessiva, rosto/mãos estranhas, texto deformado, efeitos exagerados.
+
+A arte deve parecer [ex: artesanal, elegante, real, delicada, comercial, natural].</pre>
+    </article>
+  </section>
+
+  <section class="section searchable" id="shopee" data-keywords="shopee marketplace produto realista foto comercial anúncio capa">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">Shopee · Produto Realista</h2>
+        <p class="section-sub">Para capas, anúncios e imagens comerciais com aspecto real.</p>
+      </div>
+      <span class="badge">Venda</span>
+    </div>
+
+    <article class="prompt-card">
+      <div class="card-head">
+        <div>
+          <h3>Produto realista para marketplace</h3>
+          <p>Pins, crachás, bottons, lapelas, chaveiros e similares.</p>
+        </div>
+        <button class="copy-btn" data-copy="p-shopee">Copiar prompt</button>
+      </div>
+      <pre id="p-shopee">Crie uma imagem publicitária de produto para marketplace, com aparência realista e profissional.
+
+Produto principal: [nome do produto].
+
+A imagem deve mostrar o produto com clareza, como protagonista absoluto.
+
+Estilo visual: fotografia de produto realista, clean e comercial, como anúncio de Shopee de alta qualidade, sem parecer render artificial.
+
+Composição: fundo limpo e discreto, produto centralizado ou levemente deslocado, enquadramento bem organizado, com foco total no produto. Se necessário, incluir pequenos elementos de apoio que combinem com o produto, sem poluir a cena.
+
+Iluminação: suave, clara e natural, com sombras discretas e realistas.
+
+Cores: [descreva a paleta].
+
+Detalhes importantes: mostrar claramente material, formato, acabamento e modo de uso do produto. Não alterar o design real do produto.
+
+Texto na arte: [se houver].
+
+Formato: [1:1 ou 9:16 ou outro].
+
+Evitar: aparência 3D exagerada, brilho artificial, fundo futurista, excesso de enfeites, objetos irreais, composição com cara de IA, mãos deformadas, texto ilegível.</pre>
+      <div class="tip"><strong>Dica:</strong> quando o produto real já existe, descreva com precisão material, tamanho e acabamento para reduzir alterações indesejadas.</div>
+    </article>
+  </section>
+
+  <section class="section searchable" id="aquarela" data-keywords="aquarela artesanal botton brinde ponta grossa gralha araucaria pintura papel">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">Aquarela Artesanal</h2>
+        <p class="section-sub">Para bottons, brindes, campanhas e ilustrações afetivas.</p>
+      </div>
+      <span class="badge">Ilustração</span>
+    </div>
+
+    <article class="prompt-card">
+      <div class="card-head">
+        <div>
+          <h3>Aquarela com aparência humana</h3>
+          <p>Foco em textura, pigmento e composição simples.</p>
+        </div>
+        <button class="copy-btn" data-copy="p-aquarela">Copiar prompt</button>
+      </div>
+      <pre id="p-aquarela">Crie uma ilustração em aquarela artesanal para [tipo de produto].
+
+Tema principal: [descreva o tema].
+
+Estilo visual: aquarela tradicional feita à mão, com aparência de pintura real sobre papel, delicada e elegante. A arte deve parecer ilustrada por um artista, não gerada por IA.
+
+Composição: simples, harmoniosa e bem resolvida, com foco no elemento principal e poucos elementos secundários. Manter áreas de respiro e evitar poluição visual.
+
+Elementos obrigatórios: [liste].
+
+Elementos secundários: [liste].
+
+Paleta: [cores desejadas].
+
+Acabamento: manchas suaves de aquarela, variações naturais de pigmento, textura de papel visível, bordas levemente irregulares, transições suaves de cor, imperfeições sutis naturais da pintura.
+
+Texto: [se houver, informar o texto exato. Se quiser melhor resultado, usar “não inserir texto” e depois adicionar no Canva].
+
+Formato: [1:1, 3:4, 5,5x18 cm, etc.].
+
+Evitar: aparência digital excessiva, brilho artificial, elementos demais, flores ou ornamentos desnecessários, composição muito carregada, estilo infantil demais, aparência genérica de IA.</pre>
+    </article>
+  </section>
+
+  <section class="section searchable" id="instagram" data-keywords="instagram story post editorial minimalista estoque lançamento campanha social media">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">Instagram · Editorial Minimalista</h2>
+        <p class="section-sub">Para posts, stories, lançamentos e comunicações de marca.</p>
+      </div>
+      <span class="badge">Social</span>
+    </div>
+
+    <article class="prompt-card">
+      <div class="card-head">
+        <div>
+          <h3>Editorial leve e contemporâneo</h3>
+          <p>Visual de designer, sem excesso de elementos promocionais.</p>
+        </div>
+        <button class="copy-btn" data-copy="p-instagram">Copiar prompt</button>
+      </div>
+      <pre id="p-instagram">Crie uma arte editorial minimalista para Instagram.
+
+Objetivo: [ex: divulgar produto, anunciar reposição de estoque, campanha, coleção nova].
+
+Estilo visual: design editorial contemporâneo, elegante, leve e clean.
+
+Composição: poucos elementos, bem distribuídos, com bastante espaço negativo. A arte deve ter foco claro e leitura visual limpa.
+
+Elemento principal: [produto, ilustração ou tema].
+
+Elementos de apoio: discretos e coerentes com o tema.
+
+Paleta: [cores desejadas].
+
+Acabamento: aparência refinada, delicada, organizada e natural. A arte deve parecer criada por um designer, não por um gerador automático.
+
+Texto: inserir apenas [texto exato] de forma discreta e elegante, com boa hierarquia visual.
+
+Formato: [1:1, 4:5 ou 9:16].
+
+Evitar: excesso de informação, fundos exagerados, enfeites demais, brilho, aparência promocional barata, elementos flutuantes, estilo genérico de IA.</pre>
+    </article>
+  </section>
+
+  <section class="section searchable" id="postal" data-keywords="cartão postal ponta grossa marca pagina lembrança afetiva estação saudade vila velha furnas araucaria">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">Cartão-postal Ilustrado</h2>
+        <p class="section-sub">Para lembranças, Ponta Grossa, marca-páginas e peças colecionáveis.</p>
+      </div>
+      <span class="badge">Afetivo</span>
+    </div>
+
+    <article class="prompt-card">
+      <div class="card-head">
+        <div>
+          <h3>Cartão-postal artesanal</h3>
+          <p>Visual delicado, charmoso e levemente nostálgico.</p>
+        </div>
+        <button class="copy-btn" data-copy="p-postal">Copiar prompt</button>
+      </div>
+      <pre id="p-postal">Crie uma arte ilustrada no estilo cartão-postal para [produto/uso].
+
+Tema central: [descrever].
+
+Estilo visual: ilustração delicada e charmosa, inspirada em cartão-postal artístico, com aparência artesanal e elegante.
+
+Composição: cena principal bem definida, com enquadramento bonito e equilibrado. Pode ter uma moldura visual sutil ou organização típica de cartão-postal, mas sem exagero.
+
+Elementos obrigatórios: [liste].
+
+Paleta: [cores].
+
+Acabamento: visual suave, afetivo, levemente nostálgico, com textura discreta de papel ou pintura. A arte deve parecer especial e colecionável.
+
+Texto: [colocar ou não colocar. Se colocar, informar exatamente].
+
+Formato: [ex: vertical 5,5x18 cm, quadrado para botton, etc.].
+
+Evitar: excesso de realismo artificial, poluição visual, estilo caricatural demais, composição bagunçada, elementos aleatórios.</pre>
+    </article>
+  </section>
+
+  <section class="section searchable" id="mockup" data-keywords="mockup lifestyle uso real crachá lapela botton chaveiro mão roupa produto">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">Mockup · Lifestyle Realista</h2>
+        <p class="section-sub">Para mostrar o produto em uso de forma natural e crível.</p>
+      </div>
+      <span class="badge">Uso real</span>
+    </div>
+
+    <article class="prompt-card">
+      <div class="card-head">
+        <div>
+          <h3>Produto em contexto real</h3>
+          <p>Ideal para crachá, lapela, botton, chaveiro e demonstrações.</p>
+        </div>
+        <button class="copy-btn" data-copy="p-mockup">Copiar prompt</button>
+      </div>
+      <pre id="p-mockup">Crie uma cena realista mostrando [produto] em uso.
+
+Estilo visual: fotografia lifestyle natural e elegante.
+
+Cena: [descreva onde o produto está sendo usado].
+
+Foco principal: o produto deve continuar sendo o protagonista, mas inserido em um contexto realista.
+
+Iluminação: natural, suave e real.
+
+Composição: organizada, simples e crível.
+
+Detalhes importantes: mostrar o tamanho, a função e o contexto real do produto sem alterar suas características.
+
+Paleta: [cores desejadas].
+
+Formato: [9:16, 1:1 etc.].
+
+Evitar: poses artificiais, mãos deformadas, ambiente falso, elementos excessivos, aparência de propaganda genérica de IA.</pre>
+    </article>
+  </section>
+
+  <section class="section searchable" id="produtos" data-keywords="produtos pin pins botton bottons cracha crachá lapela chaveiro marca pagina papelaria">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">Prompts por Produto</h2>
+        <p class="section-sub">Atalhos para os produtos mais usados pela Ste Artts.</p>
+      </div>
+      <span class="badge">Consulta rápida</span>
+    </div>
+
+    <div class="grid-2">
+      <article class="prompt-card">
+        <div class="card-head">
+          <div>
+            <h3>Pin / Botton</h3>
+            <p>Arte frontal com leitura forte em tamanho pequeno.</p>
+          </div>
+          <button class="copy-btn" data-copy="p-pin">Copiar</button>
+        </div>
+        <pre id="p-pin">Crie uma arte para pin/botton com aparência artesanal e elegante.
+
+Tema: [tema].
+
+Elemento principal: [elemento].
+
+Composição: circular ou centralizada, simples, com leitura clara mesmo em tamanho pequeno. O elemento principal deve ocupar a maior parte da área útil sem encostar excessivamente nas bordas.
+
+Estilo: [aquarela artesanal / ilustração editorial / minimalista].
+
+Paleta: [3 a 5 cores].
+
+Evitar: excesso de elementos pequenos, fundo confuso, texto muito fino, brilho artificial, aparência 3D e detalhes que desapareçam na impressão.
+
+Formato: 1:1, pensado para recorte circular.</pre>
+      </article>
+
+      <article class="prompt-card">
+        <div class="card-head">
+          <div>
+            <h3>Crachá / Lapela</h3>
+            <p>Produto fiel, limpo e comercial.</p>
+          </div>
+          <button class="copy-btn" data-copy="p-cracha">Copiar</button>
+        </div>
+        <pre id="p-cracha">Crie uma imagem comercial realista de [crachá/lapela].
+
+O produto deve manter exatamente suas proporções, formato, material, sistema de fixação e acabamento.
+
+Mostrar o produto em um cenário simples, limpo e real, com iluminação natural e sombra discreta.
+
+Se houver pessoa usando o produto, a roupa deve ser neutra e elegante, sem competir visualmente com o crachá/lapela.
+
+Foco: evidenciar tamanho, acabamento e forma de uso.
+
+Evitar: alterar o design do produto, criar mecanismos inexistentes, brilho plástico exagerado, mãos estranhas e aparência de render 3D.
+
+Formato: [1:1 / 4:5 / 9:16].</pre>
+      </article>
+
+      <article class="prompt-card">
+        <div class="card-head">
+          <div>
+            <h3>Marca-página</h3>
+            <p>Composição vertical e boa leitura.</p>
+          </div>
+          <button class="copy-btn" data-copy="p-marca">Copiar</button>
+        </div>
+        <pre id="p-marca">Crie uma arte vertical para marca-página no tamanho 5,5 x 18 cm.
+
+Tema: [tema].
+
+Estilo: [aquarela artesanal / cartão-postal / editorial delicado].
+
+Composição: vertical, organizada de cima para baixo, com um elemento principal e poucos elementos de apoio. Manter margens de segurança e áreas de respiro.
+
+Paleta: [cores].
+
+Texto: [texto exato ou “não inserir texto”].
+
+A arte deve funcionar bem impressa em formato estreito e alongado.
+
+Evitar: elementos muito pequenos, fundo excessivamente cheio, excesso de ornamentos e aparência digital genérica.</pre>
+      </article>
+
+      <article class="prompt-card">
+        <div class="card-head">
+          <div>
+            <h3>Chaveiro / Produto pequeno</h3>
+            <p>Clareza de material e escala.</p>
+          </div>
+          <button class="copy-btn" data-copy="p-chaveiro">Copiar</button>
+        </div>
+        <pre id="p-chaveiro">Crie uma fotografia de produto realista de [chaveiro/produto pequeno].
+
+Mostrar claramente o formato, o material, o acabamento e a escala do produto.
+
+Usar fundo neutro e poucos elementos de apoio. Pode incluir uma mão segurando o produto somente se isso ajudar a demonstrar tamanho, com anatomia natural e pose simples.
+
+Iluminação suave e realista.
+
+Evitar: objetos decorativos demais, cenário luxuoso, reflexos exagerados, mãos artificiais e alteração do produto real.
+
+Formato: [1:1 / 4:5 / 9:16].</pre>
+      </article>
+    </div>
+  </section>
+
+  <section class="section searchable" id="refinamento" data-keywords="refinamento corrigir menos ia natural simples melhorar">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">Bloco de Refinamento</h2>
+        <p class="section-sub">Para usar quando a primeira geração vier artificial demais.</p>
+      </div>
+      <span class="badge">Correção</span>
+    </div>
+
+    <article class="prompt-card">
+      <div class="card-head">
+        <div>
+          <h3>Refinar sem reescrever tudo</h3>
+          <p>Adicione este bloco ao final do prompt anterior.</p>
+        </div>
+        <button class="copy-btn" data-copy="p-refina">Copiar prompt</button>
+      </div>
+      <pre id="p-refina">Refinar para ficar mais natural e menos artificial.
+
+Reduzir excesso de detalhes.
+Simplificar a composição.
+Diminuir elementos decorativos.
+Deixar a imagem com aparência mais artesanal e humana.
+Adicionar pequenas imperfeições naturais.
+Evitar simetria excessiva.
+Evitar brilho e textura plástica.
+Manter visual elegante, leve e autêntico.</pre>
+    </article>
+  </section>
+
+  <section class="section searchable" id="restricoes" data-keywords="restrições regras não fazer evitar padrão marca">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">Bloco de Restrições</h2>
+        <p class="section-sub">Regras fixas para manter a identidade visual da Ste Artts.</p>
+      </div>
+      <span class="badge">Padrão da marca</span>
+    </div>
+
+    <article class="prompt-card">
+      <div class="card-head">
+        <div>
+          <h3>Regras fixas da Ste Artts</h3>
+          <p>Pode ser anexado a qualquer prompt.</p>
+        </div>
+        <button class="copy-btn" data-copy="p-regras">Copiar prompt</button>
+      </div>
+      <pre id="p-regras">Regras da arte:
+- não poluir a composição;
+- não exagerar nos elementos;
+- não usar efeitos brilhantes;
+- não deixar aparência futurista;
+- não mudar o produto real;
+- não descaracterizar mascotes ou elementos já definidos;
+- manter aparência elegante e vendável;
+- manter legibilidade e equilíbrio visual;
+- usar poucos elementos e bastante respiro;
+- evitar simetria excessiva;
+- evitar textura plástica ou render 3D;
+- priorizar aparência humana, artesanal e natural.</pre>
+    </article>
+  </section>
+
+  <div class="empty" id="empty">
+    Nenhum prompt encontrado para essa busca.
+  </div>
+</main>
+
+<a class="back-top" id="backTop" href="#topo" aria-label="Voltar ao topo">↑</a>
+
+<footer>
+  Biblioteca de Prompts · Ste Artts · Arquivo HTML local e independente
+</footer>
+
+<script>
+  const copyButtons = document.querySelectorAll('.copy-btn');
+
+  copyButtons.forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const target = document.getElementById(btn.dataset.copy);
+      const text = target.innerText.trim();
+
+      try{
+        await navigator.clipboard.writeText(text);
+      }catch(e){
+        const area = document.createElement('textarea');
+        area.value = text;
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+      }
+
+      const old = btn.textContent;
+      btn.textContent = 'Copiado ✓';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = old;
+        btn.classList.remove('copied');
+      }, 1600);
+    });
+  });
+
+  const search = document.getElementById('search');
+  const sections = [...document.querySelectorAll('.searchable')];
+  const empty = document.getElementById('empty');
+
+  function normalize(s){
+    return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
+  search.addEventListener('input', () => {
+    const q = normalize(search.value.trim());
+    let visible = 0;
+
+    sections.forEach(section => {
+      const haystack = normalize(
+        section.innerText + ' ' + (section.dataset.keywords || '')
+      );
+      const match = !q || haystack.includes(q);
+      section.style.display = match ? '' : 'none';
+      if(match) visible++;
+    });
+
+    empty.style.display = visible ? 'none' : 'block';
+  });
+
+  const menuLinks = [...document.querySelectorAll('.menu a')];
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        menuLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.menu a[href="#${entry.target.id}"]`);
+        if(active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+
+  sections.forEach(section => observer.observe(section));
+
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    backTop.classList.toggle('show', window.scrollY > 700);
+  });
+</script>
+</body>
+</html>
